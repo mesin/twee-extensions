@@ -3,7 +3,7 @@
 /**
  * Setting Jade View Engine for Frontend
  */
-module.exports = function() {
+module.exports.extension = function() {
     var options = twee.getConfig('twee:options:viewEngine');
 
     if (options.disabled) {

@@ -3,7 +3,7 @@
 /**
  * Setting all the parsers that are used in HTTP protocol for basic case
  */
-module.exports = function() {
+module.exports.extension = function() {
     var fs = require('fs')
         , path = require('path')
         , faviconFileName = twee.getConfig('twee:options:favicon:file')

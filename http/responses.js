@@ -5,7 +5,7 @@ var xml = require('object-to-xml');
 /**
  * Setting Up different responses types
  */
-module.exports = function() {
+module.exports.extension = function() {
     twee.getApplication().use(function(req, res, next){
         res.xml = function(variables) {
             res.set('Content-Type', 'text/xml');

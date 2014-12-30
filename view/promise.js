@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function() {
+module.exports.extension = function() {
     twee.getApplication().use(require('express-promise')());
 };

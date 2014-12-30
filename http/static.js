@@ -6,7 +6,7 @@ var express = require('express')
 /**
  * Setting Static Files handling and serving
  */
-module.exports = function() {
+module.exports.extension = function() {
     twee.emit('twee.setupStaticFilesServing.Start');
     twee.getApplication().use(
         express.static(path.join(twee.getBaseDirectory(), twee.getConfig('twee:options:staticFiles:directory', 'public')))

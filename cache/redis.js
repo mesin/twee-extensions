@@ -5,7 +5,7 @@
  */
 module.exports.extension = function() {
     var _redis = require("redis")
-        , redisConfig = app.getConfig('twee:options:cache:redis');
+        , redisConfig = twee.getConfig('twee:options:cache:redis');
 
     var redisClient = _redis.createClient(redisConfig);
 
@@ -14,7 +14,7 @@ module.exports.extension = function() {
     });
 
     twee.on('twee.Exit', function(){
-        // TODO: check if it works
+        twee.log('[REDIS] Disconnecting.');
         redisClient.quit();
     });
 

@@ -8,23 +8,20 @@ module.exports.extension = function() {
     }
 
     var session = require('express-session')
-        , RedisStore = require('connect-redis')(session)
-        , passport = require('passport');
+        , RedisStore = require('connect-redis')(session);
 
-    return;
+    var sessionOptions = twee.getConfig('twee:options:session:options')
+        , redisClient = twee.getApplication().get('redis');
 
-    var sessionOptions = this.__app.get('core').session.options;
-    sessionOptions.store = new RedisStore({client: global.redis});
-
-    this.__app.use(session(sessionOptions));
-
-    if (this.__app.get('core').passport.enabled) {
-        this.__app.use(passport.initialize());
-        this.__app.use(passport.session());
+    if (!redisClient) {
+        throw new Error('Dependency: redis client has not been installed, but required');
     }
 
+    sessionOptions.store = new RedisStore({client: redisClient});
+    app.use(session(sessionOptions));
+
     // Handle Session Connection Troubles
-    this.__app.use(function (req, res, next) {
+    app.use(function (req, res, next) {
         if (!req.session) {
             self.error('Session Connection Trouble!');
         }
@@ -35,6 +32,9 @@ module.exports.extension = function() {
 module.exports.dependencies = {
     "Twee Cookies": {
         "module": "twee-extensions/http/cookie"
+    },
+    "Redis Client": {
+        "module": "twee-extensions/cache/redis"
     }
 };
 

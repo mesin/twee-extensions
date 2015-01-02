@@ -14,6 +14,7 @@ module.exports.extension = function() {
         , path = require('path');
 
     function renderTemplate(template, variables, callback) {
+
         if (variables.error) {
             variables.error.template = template;
         }
@@ -22,6 +23,12 @@ module.exports.extension = function() {
     }
 
     var app = twee.getApplication();
+
+    // Registering templating engine object in application
+    app.set('viewEngineInstance', swig);
+    app.set('viewEngineType', 'swig');
+
+    // Setting up view engine in application
     app.engine(options.swig.engineExtension, renderTemplate);
     app.set('view engine', options.swig.engineExtension);
     app.set('views', [path.join(twee.getBaseDirectory(), 'modules')]);

@@ -1,11 +1,12 @@
 'use strict';
 
-var xml = require('object-to-xml');
-
 /**
  * Setting Up different responses types
+ * Currently support additional XML response type
  */
 module.exports.extension = function() {
+    var xml = require('object-to-xml');
+
     twee.getApplication().use(function(req, res, next){
         res.xml = function(variables) {
             res.set('Content-Type', 'text/xml');
@@ -15,3 +16,5 @@ module.exports.extension = function() {
         next();
     });
 };
+
+module.exports.npmDependencies = ['object-to-xml'];

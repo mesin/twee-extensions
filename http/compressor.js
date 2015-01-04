@@ -105,6 +105,7 @@ function compressHTML(html, minify) {
 
 /**
  * Compressing returned html. It saves about 30-40% of html traffic
+ * TODO: use also this: https://www.npmjs.com/package/express-minify
  */
 module.exports.extension = function() {
     var middlewareStack = [];
@@ -120,12 +121,10 @@ module.exports.extension = function() {
             var end = res.end;
             res.end = function(chunk, encoding){
                 if ((req.accepts('html') || req.accepts('xml')) && chunk) {
-                    console.log(chunk.length);
                     var responseHtml = compressHTML(chunk.toString(encoding), true);
                     chunk = new Buffer(responseHtml, encoding);
                     res.setHeader('Content-Length', chunk.length);
                 }
-                console.log('end!');
                 return end.call(res, chunk, encoding);
             };
 
@@ -139,9 +138,10 @@ module.exports.extension = function() {
 
 module.exports.dependencies = {
     // Let static files to work first
-    "Twee Static Serving": {
+    "Twee Session": {
+        "module": "twee-extensions/http/session"
+    },
+    "Twee Static Files": {
         "module": "twee-extensions/http/static"
     }
 };
-
-module.exports.npmDependencies = ['twee-extensions/node_modules/compression'];

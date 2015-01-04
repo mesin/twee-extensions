@@ -20,7 +20,7 @@ module.exports.extension = function() {
             variables.error.template = template;
         }
 
-        return jade.renderFile(template, extend(options.jade.options, variables), callback, variables.error || {});
+        return jade.renderFile(template, twee.extend(options.jade.options, variables), callback, variables.error || {});
     }
 
     var app = twee.getApplication();

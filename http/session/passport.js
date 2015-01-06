@@ -11,10 +11,6 @@ module.exports.extension = function() {
     }
 };
 
-module.exports.npmDependencies = [
-    'twee-extensions/node_modules/passport'
-];
-
 module.exports.dependencies = {
     "Twee Session": {
         "module": "twee-extensions/http/session"

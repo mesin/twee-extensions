@@ -37,8 +37,3 @@ module.exports.dependencies = {
         "module": "twee-extensions/cache/redis"
     }
 };
-
-module.exports.npmDependencies = [
-    'twee-extensions/node_modules/express-session',
-    'twee-extensions/node_modules/connect-redis'
-];

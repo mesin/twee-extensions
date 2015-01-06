@@ -38,8 +38,3 @@ module.exports.extension = function() {
         app.set('view cache', false);
     }
 };
-
-
-module.exports.npmDependencies = [
-    'twee-extensions/node_modules/jade'
-];

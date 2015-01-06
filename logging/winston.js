@@ -21,9 +21,3 @@ module.exports.extension = function() {
         exitOnError: twee.getConfig('twee:options:logging:winston:exitOnError')
     }));
 };
-
-
-module.exports.npmDependencies = [
-    'twee-extensions/node_modules/express-winston',
-    'twee-extensions/node_modules/winston'
-];

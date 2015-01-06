@@ -21,8 +21,3 @@ module.exports.extension = function() {
     twee.getApplication().use(bodyParser.urlencoded(twee.getConfig('twee:options:bodyParser:urlencoded')));
     twee.emit('twee.setupHttpParsers.End');
 };
-
-module.exports.npmDependencies = [
-    'twee-extensions/node_modules/body-parser',
-    'twee-extensions/node_modules/serve-favicon'
-];

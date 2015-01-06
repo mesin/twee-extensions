@@ -16,8 +16,3 @@ module.exports.extension = function() {
         next();
     });
 };
-
-
-module.exports.npmDependencies = [
-    'twee-extensions/node_modules/object-to-xml'
-];

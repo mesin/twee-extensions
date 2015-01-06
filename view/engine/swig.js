@@ -40,8 +40,3 @@ module.exports.extension = function() {
 
     swig.setDefaults(options.swig.options || {});
 };
-
-
-module.exports.npmDependencies = [
-    'twee-extensions/node_modules/swig'
-];

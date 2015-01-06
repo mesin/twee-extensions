@@ -1,3 +1,4 @@
 node_modules
-.idea
 atlassian-ide-plugin.xml
+.idea
+npm-debug.log

@@ -21,4 +21,6 @@ module.exports.extension = function() {
     twee.getApplication().set('redis', redisClient);
 };
 
-module.exports.npmDependencies = ['redis'];
+module.exports.npmDependencies = [
+    'twee-extensions/node_modules/redis'
+];

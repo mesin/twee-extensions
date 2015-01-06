@@ -31,3 +31,7 @@ module.exports.extension = function() {
     )));
     twee.emit('twee.setupStaticFilesServing.End');
 };
+
+module.exports.npmDependencies = [
+    'twee-extensions/node_modules/express'
+];

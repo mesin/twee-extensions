@@ -11,7 +11,9 @@ module.exports.extension = function() {
     }
 };
 
-module.exports.npmDependencies = ['passport'];
+module.exports.npmDependencies = [
+    'twee-extensions/node_modules/passport'
+];
 
 module.exports.dependencies = {
     "Twee Session": {

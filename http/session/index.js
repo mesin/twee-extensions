@@ -39,8 +39,6 @@ module.exports.dependencies = {
 };
 
 module.exports.npmDependencies = [
-    'redis',
-    'express-session',
-    'connect-redis',
-    'passport'
+    'twee-extensions/node_modules/express-session',
+    'twee-extensions/node_modules/connect-redis'
 ];

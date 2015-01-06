@@ -1,61 +1,53 @@
 {
-  "name": "twee-extensions",
-  "preferGlobal": false,
-  "version": "0.0.1",
-  "author": "Dmitri Mesin <dmitri.mesin@gmail.com>",
-  "homepage": "https://github.com/mesin/twee-extensions",
-  "description": "Extensions for Twee Framework - the most powerful, elegant and extensive framework for Node.js based on Express.js",
-  "license": "MIT",
-  "dependencies": {
-    "compression": "*",
-    "on-headers": "*",
-    "node-fs": "*",
-    "redis": "*",
-    "express-winston": "*",
-    "winston": "*",
-    "nconf": "*",
-    "express": "*",
-    "path": "*",
+    "name": "twee-extensions",
+    "preferGlobal": false,
+    "version": "0.0.2",
+    "author": "Dmitri Mesin <dmitri.mesin@gmail.com>",
+    "homepage": "https://github.com/mesin/twee-extensions",
+    "description": "Extensions for Twee Framework - the most powerful, elegant and extensive framework for Node.js based on Express.js",
+    "license": "MIT",
+    "underscore": "*",
     "swig": "*",
-    "jade": "*",
-    "serve-favicon": "*",
-    "morgan": "*",
-    "cookie-parser": "*",
-    "body-parser": "*",
-    "express-session": "*",
-    "connect-redis": "*",
-    "passport": "*",
-    "express-mailer": "*",
-    "colors": "*",
-    "localize": "*",
-    "q-orm": "*",
-    "express-promise": "*",
-    "object-to-xml": "*"
-  },
-  "main": "index.js",
-  "devDependencies": {},
-  "scripts": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mesin/twee-extensions.git"
-  },
-  "keywords": [
-    "twee",
-    "framework",
-    "extensions",
-    "modules",
-    "route",
-    "web",
-    "middleware",
-    "mvc",
-    "routes",
-    "rest",
-    "restful",
-    "api"
-  ],
-  "bugs": {
-    "url": "https://github.com/mesin/twee-extensions/issues"
-  }
+    "dependencies": {
+        "redis": "*",
+        "cookie-parser": "*",
+        "express-session": "*",
+        "connect-redis": "*",
+        "passport": "*",
+        "compression": "*",
+        "serve-favicon": "*",
+        "body-parser": "*",
+        "object-to-xml": "*",
+        "express": "*",
+        "express-winston": "*",
+        "winston": "*",
+        "jade": "*",
+        "express-promise": "*"
+    },
+    "main": "index.js",
+    "devDependencies": {},
+    "scripts": {
+        "test": "test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mesin/twee-extensions.git"
+    },
+    "keywords": [
+        "twee",
+        "framework",
+        "extensions",
+        "modules",
+        "route",
+        "web",
+        "middleware",
+        "mvc",
+        "routes",
+        "rest",
+        "restful",
+        "api"
+    ],
+    "bugs": {
+        "url": "https://github.com/mesin/twee-extensions/issues"
+    }
 }

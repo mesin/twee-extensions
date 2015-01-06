@@ -17,4 +17,7 @@ module.exports.extension = function() {
     });
 };
 
-module.exports.npmDependencies = ['object-to-xml'];
+
+module.exports.npmDependencies = [
+    'twee-extensions/node_modules/object-to-xml'
+];

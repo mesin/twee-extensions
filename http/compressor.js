@@ -90,7 +90,7 @@ function compressHTML(html, minify) {
         }
     }
 
-    html = html.replace(REG_1, '').replace(REG_2, '');
+    html = html.replace(REG_1, ' ').replace(REG_2, '');
 
     var keys = Object.keys(cache);
     length = keys.length;

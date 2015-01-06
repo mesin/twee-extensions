@@ -24,7 +24,6 @@ module.exports.extension = function() {
 
 
 module.exports.npmDependencies = [
-    'express-winston',
-    'winston',
-    'path',
+    'twee-extensions/node_modules/express-winston',
+    'twee-extensions/node_modules/winston'
 ];

@@ -24,9 +24,9 @@
         "jade": "*",
         "swig": "*",
         "express-promise": "*",
-        "underscore": "*"
+        "underscore": "*",
+        "i18n": "*"
     },
-    "main": "index.js",
     "devDependencies": {},
     "scripts": {
         "test": "test"

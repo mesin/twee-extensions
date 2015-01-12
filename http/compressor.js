@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Removing all the html comments
@@ -95,8 +95,8 @@ function compressHTML(html, minify) {
     var keys = Object.keys(cache);
     length = keys.length;
 
-    for (var i = 0; i < length; i++) {
-        var key = keys[i];
+    for (i = 0; i < length; i++) {
+        key = keys[i];
         html = html.replace(key, cache[key]);
     }
 
@@ -104,23 +104,23 @@ function compressHTML(html, minify) {
 }
 
 /**
- * Compressing returned html. It saves about 30-40% of html traffic
- * TODO: use also this: https://www.npmjs.com/package/express-minify
+ * Compressing returned html and all the responses with gzip
  */
 module.exports.extension = function() {
     var middlewareStack = [];
 
     // GZIP should always be first! because it is problem to handle response for html cleaning
-    if (twee.getConfig('twee:options:gzipHtml')) {
+    if (twee.getConfig('twee:options:compress:gzip')) {
         var compression = require('compression');
         middlewareStack.push(compression({threshold: 512}));
     }
 
-    if (twee.getConfig('twee:options:compressHtml')) {
+    // Cleaning HTML
+    if (twee.getConfig('twee:options:compress:html')) {
         middlewareStack.push(function(req, res, next){
             var end = res.end;
             res.end = function(chunk, encoding){
-                if ((req.accepts('html') || req.accepts('xml')) && chunk) {
+                if (req.accepts('html') && chunk) {
                     var responseHtml = compressHTML(chunk.toString(encoding), true);
                     chunk = new Buffer(responseHtml, encoding);
                     res.setHeader('Content-Length', chunk.length);
@@ -137,10 +137,11 @@ module.exports.extension = function() {
 };
 
 module.exports.dependencies = {
-    // Let static files to work first
+    // Session also should be first
     "Twee Session": {
         "module": "twee-extensions/http/session"
     },
+    // Let static files to work first
     "Twee Static Files": {
         "module": "twee-extensions/http/static"
     }

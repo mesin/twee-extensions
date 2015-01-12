@@ -1,9 +1,9 @@
-'use strict';
-
 /**
  * Setting all the parsers that are used in HTTP protocol for basic case
  */
 module.exports.extension = function() {
+    "use strict";
+
     var fs = require('fs')
         , path = require('path')
         , faviconFileName = twee.getConfig('twee:options:favicon:file')

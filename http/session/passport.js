@@ -2,6 +2,8 @@
  * Passport handlers installing
  */
 module.exports.extension = function() {
+    "use strict";
+
     var passport = require('passport')
         , app = twee.getApplication();
 
@@ -12,6 +14,7 @@ module.exports.extension = function() {
 };
 
 module.exports.dependencies = {
+    // Session is required for passport
     "Twee Session": {
         "module": "twee-extensions/http/session"
     }

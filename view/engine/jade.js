@@ -1,9 +1,9 @@
-'use strict';
-
 /**
  * Setting Jade View Engine for Frontend
  */
 module.exports.extension = function() {
+    "use strict";
+
     var options = twee.getConfig('twee:options:viewEngine');
 
     if (options.disabled) {

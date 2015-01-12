@@ -1,28 +1,29 @@
 /**
  * Extension that allows to write awesome logs
- * Installing it after all head middleware, so dispatch process will be as complete as possible
+ * Installing it before all head middleware, so dispatch process will be as complete as possible
  */
 module.exports.extension = function() {
+    "use strict";
+
     var expressWinston = require('express-winston')
         , winston = require('winston')
         , path = require('path');
 
+
+    var transports = [
+        new winston.transports.File({
+            filename: path.join(twee.getBaseDirectory(), twee.getConfig('twee:options:logging:winston:accessFile'))
+        })
+    ];
+
+    if (twee.getConfig('twee:options:logging:winston:consoleLogging')) {
+        transports.push(new winston.transports.Console(
+            twee.getConfig('twee:options:logging:winston:consoleLoggingOptions')
+        ));
+    }
+
     twee.getApplication().use(expressWinston.logger({
-        transports: [
-            new winston.transports.File({
-                filename: path.join(twee.getBaseDirectory(), twee.getConfig('twee:options:logging:winston:accessFile'))
-            }),
-            new winston.transports.Console({
-                colorize: true,
-                // optional: control whether you want to log the meta data about the request (default to true)
-                meta: true,
-                msg: "[TWEE] HTTP {{res.statusCode}} {{req.method}} {{res.responseTime}}ms {{req.url}}",
-                // Use the default Express/morgan request formatting, with the same colors. Enabling this will override any msg and colorStatus if true.
-                // Will only output colors on transports with colorize set to true
-                expressFormat: true,
-                colorStatus: true
-            })
-        ],
+        transports: transports,
         exceptionHandlers: [
             new winston.transports.File({
                 filename: path.join(twee.getBaseDirectory(), twee.getConfig('twee:options:logging:winston:exceptionsFile'))

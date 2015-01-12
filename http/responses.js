@@ -1,10 +1,10 @@
-'use strict';
-
 /**
  * Setting Up different responses types
  * Currently support additional XML response type
  */
 module.exports.extension = function() {
+    "use strict";
+
     var xml = require('object-to-xml');
 
     twee.getApplication().use(function(req, res, next){

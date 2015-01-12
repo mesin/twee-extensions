@@ -1,9 +1,9 @@
-'use strict';
-
 /**
  * Redis store initializer
  */
 module.exports.extension = function() {
+    "use strict";
+
     var _redis = require("redis")
         , redisConfig = twee.getConfig('twee:options:cache:redis');
 

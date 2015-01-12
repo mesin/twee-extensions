@@ -1,4 +1,13 @@
+/**
+ * Session extension allows to use Redis sessions.
+ * No another types of sessions needed for now:
+ *      In-memory session is not usable because after restarting server
+ *      it is not saved..
+ *      Another session storages are not usable in enterprise-scaled apps
+ */
+
 module.exports.extension = function() {
+    "use strict";
 
     var app = twee.getApplication()
         , self = this;
@@ -30,10 +39,13 @@ module.exports.extension = function() {
 };
 
 module.exports.dependencies = {
-    "Twee Cookies": {
+    // First we need to parse cookies
+    "Twee Twee Cookies": {
         "module": "twee-extensions/http/cookie"
     },
-    "Redis Client": {
+
+    // And also redis client should be ready for use
+    "Twee Redis Client": {
         "module": "twee-extensions/cache/redis"
     }
 };

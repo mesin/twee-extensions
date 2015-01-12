@@ -1,8 +1,3 @@
-'use strict';
-
-var express = require('express')
-    , path = require('path');
-
 /**
  * Setting Static Files handling and serving
  * In development mode all the static files are served right from modules folders
@@ -13,6 +8,11 @@ var express = require('express')
  * static serving is ON here. Because anyway compiled assets urls in CDN will be placed into HTML
  */
 module.exports.extension = function() {
+    "use strict";
+
+    var express = require('express')
+        , path = require('path');
+
     twee.emit('twee.setupStaticFilesServing.Start');
     var application = twee.getApplication()
         , assetsFolders = twee.getModulesAssetsFolders();
@@ -24,7 +24,7 @@ module.exports.extension = function() {
         }
     }
 
-    // In production serving files in application/public => site.com/assets/
+    // ALWAYS serving files also in application/public => site.com/assets/
     application.use('/assets/', express.static(path.join(
         twee.getBaseDirectory(),
         twee.getConfig('twee:options:staticFiles:directory', 'public')

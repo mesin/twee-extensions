@@ -2,7 +2,6 @@
  * Setting view engines
  */
 module.exports.extension = function() {
-    "use strict";
 
     var disabled = twee.getConfig('twee:options:view:disabled');
 
@@ -12,16 +11,30 @@ module.exports.extension = function() {
 
     var engines = require('consolidate')
         , path = require('path')
-        , app = twee.getApplication();
+        , app = twee.getApplication()
+        , viewEngines = twee.getConfig('twee:options:view:engines');
 
-    var viewEngines = twee.getConfig('twee:options:view:engines');
-    for (var extension in viewEngines) {
-        if (engines[viewEngines[extension]]) {
-            app.engine(extension, engines[viewEngines[extension]]);
+    for (var engineName in viewEngines) {
+        if (viewEngines[engineName].disabled) {
+            continue;
+        }
+
+        var fileExt = viewEngines[engineName].fileExt || "html"
+            , engine = engines[engineName] || null;
+
+        if (engine) {
+            if (engine['render']) {
+                var render = engine['render'];
+                engine['render'] = function (str, options, fn) {
+                    twee.extend(true, options, viewEngines[engineName].options || {});
+                    return render(str, options, fn);
+                };
+                app.engine(fileExt, engine);
+            }
         }
     }
 
-    app.set('view engine', twee.getConfig('twee:options:view:defaultEngine'));
+    app.set('view engine', twee.getConfig('twee:options:view:appDefaultEngine'));
     app.set('views', [path.join(twee.getBaseDirectory(), 'modules')]);
 
     // In development environment disable cache
